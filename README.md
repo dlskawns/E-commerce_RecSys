@@ -42,21 +42,29 @@ Text(str): 고객 리뷰 데이터 전문
 * 리뷰(Text) context를 통해 문장 내 주요 키워드 추출 가능
 * 평점(Score)를 통해 추천 모델 학습을 위한 label처리 가능
 
-
 <br>
 
 ## 분석 및 모델링 진행 방법
 
-### 1. EDA & Feature Engineering
-각 Features의 특징을 면밀히 체크하고, Feature 간의 관계를 파악
-* 퍼널(Funnel) 분석을 위한 최종적으로 재구매 주기 및 재구매가 줄어든 시점을 파악해봅니다.
-* 평점 또는 작성 날짜 데이터와 같이 고객 구매행동 feature와 다른 feature 간의 관계를 파악해봅니다.
+### 1. EDA & Feature Engineering  
+각 Features의 특징을 면밀히 체크하고, Feature 간의 관계를 파악  
+
+* 퍼널(Funnel) 분석을 위한 최종적으로 재구매 주기 및 재구매가 줄어든 시점을 파악해봅니다.  
+* 평점 또는 작성 날짜 데이터와 같이 고객 구매행동 feature와 다른 feature 간의 관계를 파악해봅니다.  
+
+<br>
+
+<br>
 
 ### 2. Text 분석
 
 * 리뷰(Text) 분석을 통해 키워드 및 고객 집단(cohort)분류를 위한 인사이트를 얻습니다.
 * nltk 모듈의 함수가 다양하므로 nltk로 토큰화. (ex: most_common, FreqDist 등)
 * TOP50 내의 단어 중 무의미한 단어들을 갖고 있다면 불용어로 처리. 최종 명사, 형용사로 전체 데이터 주요 키워드 파악
+
+<br>
+
+<br>
 
 ### 3. 키워드 추출 모델
 Sentence Transformer - Bert(distilbert-base-nli-mean-tokens)를 이용  
@@ -72,15 +80,16 @@ NLI(Natural Language Inference) 작업에 적합한 모델로, 문장(doc)단위
 * sentence transformer로 샘플 별 문장 임베딩 생성  
 * sentence transformer로 샘플 별 단어 임베딩 생성  
 * Cosine 유사도를 통해 특정 중요 단어 파악  
-* 동일한 방법으로 n gram(1,1)로 진행하여 최종 키워드 top 5~8개 추출  
+* 동일한 방법으로 n gram(1,1)로 진행하여 최종 키워드 top 5~8개 추출    
 
 <br>
 
 <br>
 
 ### 4. 문맥을 통한 고객 집단 분류 모델
-Transformer - Bert(bert-base-uncased)를 이용
-반려동물용 상품을 판매하는 것이 파악되어 반려동물 유무(0 - 없음, 1 - 강아지, 2 - 고양이, 3 - 강아지와 고양이)로 고객 세분화 진행
+Transformer - Bert(bert-base-uncased)를 이용  
+반려동물용 상품을 판매하는 것이 파악되어 반려동물 유무(0 - 없음, 1 - 강아지, 2 - 고양이, 3 - 강아지와 고양이)로 고객 세분화 진행  
+
 
 #### * 선정 이유:
 label(반려동물 유무 여부)을 설정한 뒤, 전체 문맥에 따른 특징적인 패턴을 찾아 전체 데이터셋에 자동으로 label을 지정하기 위함.
