@@ -20,6 +20,8 @@
 
 데이터셋 명/파일명/용량: Amazon Fine Food Reviews / Review.csv / 300.9 mb  
 
+![image](https://user-images.githubusercontent.com/84971151/155144787-0dffd5e2-7a2f-4411-833c-56ccb946d9ce.png)  
+
 #### Columns
 
 Id(int): 샘플별 고유값  
@@ -38,6 +40,7 @@ Text(str): 고객 리뷰 데이터 전문
 ## 프로젝트 데이터 셋 & 선정 이유:
 
 * 고객 행동 기반 데이터를 통해 자사(플랫폼 및 쇼핑몰 운영사) 고객의 이탈 원인 파악이 필요  
+  * UserId의 중복이 존재 -> 한 고객이 여러 차례 구매한 데이터 + 날짜 데이터를 고객의 행동으로 정의
 * 날짜 데이터(timestamp)를 통해 언제 구매가 줄었는지 파악
 * 리뷰(Text) context를 통해 문장 내 주요 키워드 추출 가능
 * 평점(Score)를 통해 추천 모델 학습을 위한 label처리 가능
