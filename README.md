@@ -65,6 +65,9 @@ Text(str): 고객 리뷰 데이터 전문
 * nltk 모듈의 함수가 다양하므로 nltk로 토큰화. (ex: most_common, FreqDist 등)
 * TOP50 내의 단어 중 무의미한 단어들을 갖고 있다면 불용어로 처리. 최종 명사, 형용사로 전체 데이터 주요 키워드 파악
 
+![image](https://user-images.githubusercontent.com/84971151/155152020-ed4d1d00-6f51-49d6-83f3-e949a1a8bb9e.png)
+
+
 <br>
 
 <br>
@@ -79,6 +82,9 @@ NLI(Natural Language Inference) 작업에 적합한 모델로, 문장(doc)단위
 문장단위 임베딩을 진행 후, 단어 임베딩의 유사도를 파악해 해당 문장 내 중요 키워드를 찾아낼 수 있다.  
 
 #### * 진행 방법:  
+
+![image](https://user-images.githubusercontent.com/84971151/155152623-6515a3d7-d0b6-4018-8d77-5571b01acff3.png)  
+
 * 빈도 수 기반 벡터화를 진행 (Counter Vectorizer) - n gram(3,3)으로 단어 묶음 설정  
 * sentence transformer로 샘플 별 문장 임베딩 생성  
 * sentence transformer로 샘플 별 단어 임베딩 생성  
@@ -106,6 +112,9 @@ BERT를 이용해 문맥데이터와 label을 학습하면 문장들의 패턴�
 * label 분포 파악 후 imbalanced 할 경우, under sampling 및 SMOTE 진행 후 성능 파악
 * 샘플링 방법 선정 후(최종-under sampling) BERT 다중분류 모델 학습 진행
 * 학습 완료된 모델을 통해 자동 라벨링 진행
+
+![image](https://user-images.githubusercontent.com/84971151/155157413-d896b835-b12b-4a56-8bc7-4794caefa343.png)
+
 
 <br>
 
@@ -138,6 +147,9 @@ Deep Cross Net의 구조를 이용해 모델을 설계하면, 인풋 데이터�
   * UserId 입력시 users(유저 룩업테이블)에서 DCN 모델 predict 진행을 위한 feature 정보를 가져온다. (UserId, 리뷰 수, 반려동물 유무)
   * items(상품 룩업테이블)의 상품에 대한 label을 예측한다.
   * 예측 완료 후 높은 순위의 확률을 가진 10개 상품을 노출시킨다.
+
+
+
 
 ## 문제점 및 개선점:
 #### * 3. 키워드 추출 모델 관련:
