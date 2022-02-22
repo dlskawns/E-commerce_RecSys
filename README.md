@@ -27,7 +27,7 @@
 Id(int): 샘플별 고유값  
 ProductId(str): 상품Id로 해싱처리 되어있음  
 UserId(str): 고객Id로 이역시 해싱처리 되어있음  
-ProfileName(str): 고객이 설정한 계정 이름  
+ProfileName(str): 고객이 설정한 계정 이름 -> 필요없는 데이터로 판단하여 삭제하고 분석 시작
 HelpfulnessNumerator(int): 해당 리뷰가 도움이 된다고 추천한 고객 수  
 HelpfulnessDenominator(int): 추천을 동의하거나 하지 않은   
 Score(int): 리뷰를 쓴 고객이 해당 상품에 매긴 평점  
